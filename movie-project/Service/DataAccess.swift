@@ -12,8 +12,8 @@ struct DataAccess {
     
     static let apiKey: String = "16fd5a2a34d2c3651edf338a920f6176"
     
-    static func getPopularMovies(fromPage page: Int = 1, completionHandler completion: @escaping (ListMovie?) -> Void) {
-        var request = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&language=pt-BR&page=\(page)")!)
+    static func getTopMovies(fromPage page: Int = 1, completionHandler completion: @escaping (ListMovie?) -> Void) {
+        var request = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=\(apiKey)&language=pt-BR&page=\(page)")!)
         request.httpMethod = "GET"
         
         let session = URLSession.shared
