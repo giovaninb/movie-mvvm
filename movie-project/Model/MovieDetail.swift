@@ -1,5 +1,5 @@
 //
-//  ListMovie.swift
+//  MoviewDetail.swift
 //  movie-project
 //
 //  Created by Giovani Nícolas Bettoni on 30/09/20.

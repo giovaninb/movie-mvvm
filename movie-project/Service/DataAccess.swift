@@ -92,4 +92,24 @@ struct DataAccess {
         dataTask.resume()
     }
     
+//    static func getCast(fromId id: Int, completionHandler completion: @escaping (MovieDetail?) -> Void) {
+//        var request = URLRequest(url: URL(string: "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(apiKey)&language=pt-BR")!)
+//
+//        request.httpMethod = "GET"
+//
+//        let session = URLSession.shared
+//        let dataTask = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+//            guard let error = error
+//                else {
+//                    let movieCrew = try? JSONDecoder().decode(MovieCast.self, from: data!)
+//                    completion(movieCrew)
+//                    return
+//            }
+//            print(error.localizedDescription)
+//            completion(nil)
+//            return
+//        })
+//        dataTask.resume()
+//    }
+    
 }

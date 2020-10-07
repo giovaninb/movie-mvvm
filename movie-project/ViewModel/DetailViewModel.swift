@@ -22,7 +22,6 @@ class DetailViewModel {
         DataAccess.getDetailsMovie(fromId: id) { (movieDetail) in
             
             guard let movieDetail = movieDetail else {return}
-            
             self.movieDetail = movieDetail
 //            self.downloadDelegate?.didFinishDownload()
         }
@@ -50,6 +49,12 @@ class DetailViewModel {
             }.joined(separator: ", ")
         return genresString
     }
+    
+//    public func getCastName() -> String {
+//        guard let castName = movieDetail?.na else {
+//            <#statements#>
+//        }
+//    }
     
     public func getPopularity() -> String {
         let popularity =  String(format: "%.1f", movieDetail?.voteAverage ?? 100)
