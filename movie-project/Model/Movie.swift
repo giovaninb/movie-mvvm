@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - MovieNowPlaying
 struct ListMovie: Codable {
     let results: [Movie]?
     let page, totalResults: Int?
@@ -18,7 +17,6 @@ struct ListMovie: Codable {
     }
 }
 
-// MARK: - Result
 struct Movie: Codable {
     let voteCount, id: Int?
     let video: Bool?

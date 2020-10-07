@@ -22,7 +22,6 @@ class RootViewModel {
         DataAccess.getTopMovies { (listMovies) in
             let result = listMovies?.results ?? []
             self.listTopMovies = self.orderByRating(movieList: result)
-            
             self.downloadDelegate?.didFinishDownload()
         }
     }
@@ -49,6 +48,12 @@ class RootViewModel {
     public func getPopularity(byIndexPath index: Int) -> String {
         let popularity =  String(format: "%.1f", listTopMovies?[index].voteAverage ?? 100)
         return popularity
+    }
+    
+    public func getYear(byIndexPath index: Int) -> String {
+        guard let date =  listTopMovies?[index].releaseDate else {return ""}
+        let year = String(date.prefix(4))
+        return year
     }
     
     public func getTopMoviesCount() -> Int {

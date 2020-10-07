@@ -9,14 +9,13 @@ import UIKit
 
 class DetailView: UIViewController {
     
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var imageActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var detailScrollView: UIScrollView!
+//    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+//    @IBOutlet var imageActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cover: UIImageView!
-    @IBOutlet weak var genres: UILabel!
     @IBOutlet weak var rating: UILabel!
-    @IBOutlet weak var overview: UILabel!
     @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var duration: UILabel!
+    @IBOutlet weak var overview: UILabel!
     
     var viewModel : DetailViewModel?
     var id : Int?
@@ -27,8 +26,8 @@ class DetailView: UIViewController {
         
         cover.layer.cornerRadius = 16
         
-        activityIndicator.startAnimating()
-        imageActivityIndicator.startAnimating()
+//        activityIndicator.startAnimating()
+//        imageActivityIndicator.startAnimating()
 
         overview.sizeToFit()
 //        viewModel?.downloadDelegate = self
@@ -40,7 +39,6 @@ class DetailView: UIViewController {
         movieTitle.text = viewModel.getTitle()
         rating.text = viewModel.getPopularity()
         overview.text = viewModel.getOverview()
-        genres.text = viewModel.getGenres()
         
         let imagePath = viewModel.getCover()
         
@@ -52,7 +50,7 @@ class DetailView: UIViewController {
             DispatchQueue.main.async {
                 let image = UIImage(data: data)
                 self.cover.image = image
-                self.imageActivityIndicator.isHidden = true
+//                self.imageActivityIndicator.isHidden = true
             }
         }
         
@@ -64,8 +62,7 @@ extension DetailView : DownloadDelegate {
     func didFinishDownload() {
                 DispatchQueue.main.async {
             self.setupMovieDetail()
-            self.activityIndicator.isHidden = true
-            self.detailScrollView.isHidden = false
+//            self.activityIndicator.isHidden = true
         }
     }
     

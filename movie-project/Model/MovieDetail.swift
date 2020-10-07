@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - MovieNowPlaying
 struct MovieDetail: Codable {
     let backdropPath: String?
     let genres: [Genre]?
@@ -30,7 +29,6 @@ struct MovieDetail: Codable {
     }
 }
 
-// MARK: - Genre
 struct Genre: Codable {
     let id: Int?
     let name: String?
