@@ -14,6 +14,7 @@ struct MovieDetail: Codable {
     let imdbID, originalTitle, overview: String?
     let popularity: Double?
     let posterPath: String?
+    let runtime: Double?
     let voteAverage: Double?
     let title: String?
     
@@ -24,6 +25,7 @@ struct MovieDetail: Codable {
         case originalTitle = "original_title"
         case overview, popularity
         case posterPath = "poster_path"
+        case runtime
         case voteAverage = "vote_average"
         case title
     }

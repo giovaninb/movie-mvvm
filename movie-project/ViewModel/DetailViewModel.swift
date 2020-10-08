@@ -10,8 +10,7 @@ import Foundation
 class DetailViewModel {
     
     private var movieDetail: MovieDetail?
-    
-//    var downloadDelegate: Download
+    var downloadDelegate: DownloadDelegate?
     
     
     init(id: Int) {
@@ -20,11 +19,15 @@ class DetailViewModel {
     
     func fetchMovieDetail(withId id: Int){
         DataAccess.getDetailsMovie(fromId: id) { (movieDetail) in
-            
             guard let movieDetail = movieDetail else {return}
             self.movieDetail = movieDetail
-//            self.downloadDelegate?.didFinishDownload()
+            self.downloadDelegate?.didFinishDownload()
         }
+    }
+    
+    public func getBackground() -> String {
+        guard let background =  movieDetail?.backdropPath else {return ""}
+        return background
     }
     
     public func getCover() -> String {
@@ -42,6 +45,13 @@ class DetailViewModel {
         return overview
     }
     
+    public func getRuntime() -> String {
+        guard let runtimeMin =  movieDetail?.runtime else {return ""}
+        let runtimeSec = runtimeMin * 60
+        let runtime = runtimeSec.asString(style: .abbreviated)
+        return runtime
+    }
+    
     public func getGenres() -> String {
         guard let genres =  movieDetail?.genres else {return ""}
         let genresString = genres.map { (genre) -> String in
@@ -50,14 +60,19 @@ class DetailViewModel {
         return genresString
     }
     
-//    public func getCastName() -> String {
-//        guard let castName = movieDetail?.na else {
-//            <#statements#>
-//        }
-//    }
     
     public func getPopularity() -> String {
         let popularity =  String(format: "%.1f", movieDetail?.voteAverage ?? 100)
         return popularity
     }
+}
+
+extension Double {
+  func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.hour, .minute]
+    formatter.unitsStyle = style
+    guard let formattedString = formatter.string(from: self) else { return "" }
+    return formattedString
+  }
 }

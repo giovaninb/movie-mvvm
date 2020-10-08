@@ -7,40 +7,23 @@
 
 import Foundation
 
-struct Credits: Codable {
+struct MovieCast: Codable {
     let id: Int
     let cast: [Cast]
-    let crew: [Crew]
 }
 
 struct Cast: Codable {
-    let castID: Int
-    let character, creditID: String
-    let gender, id: Int
     let name: String
-    let order: Int
+    let character: String
     let profilePath: String?
 
     enum CodingKeys: String, CodingKey {
-        case castID = "cast_id"
+        case name
         case character
-        case creditID = "credit_id"
-        case gender, id, name, order
         case profilePath = "profile_path"
     }
 }
 
-struct Crew: Codable {
-    let creditID, department: String
-    let gender, id: Int
-    let job, name: String
-    let profilePath: String?
 
-    enum CodingKeys: String, CodingKey {
-        case creditID = "credit_id"
-        case department, gender, id, job, name
-        case profilePath = "profile_path"
-    }
-}
 
 

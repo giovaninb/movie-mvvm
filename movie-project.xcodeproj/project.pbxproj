@@ -10,6 +10,11 @@
 		AD2CF1F1252E1B4200189E70 /* MovieCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF1F0252E1B4200189E70 /* MovieCast.swift */; };
 		AD2CF213252E23EE00189E70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2CF212252E23EE00189E70 /* Main.storyboard */; };
 		AD2CF216252E240700189E70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2CF215252E240700189E70 /* LaunchScreen.storyboard */; };
+		AD2CF24C252E50C500189E70 /* MovieImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF24B252E50C500189E70 /* MovieImages.swift */; };
+		AD2CF254252E6F6E00189E70 /* BackdropsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF253252E6F6E00189E70 /* BackdropsCollectionViewCell.swift */; };
+		AD2CF257252E776100189E70 /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF256252E776100189E70 /* CastCollectionViewCell.swift */; };
+		AD2CF25D252E791B00189E70 /* BackdropsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF25C252E791B00189E70 /* BackdropsListViewModel.swift */; };
+		AD2CF261252E7B6B00189E70 /* CastListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF260252E7B6B00189E70 /* CastListViewModel.swift */; };
 		AD4E61852523C1D1004B3158 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E61842523C1D1004B3158 /* AppDelegate.swift */; };
 		AD4E61872523C1D1004B3158 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E61862523C1D1004B3158 /* SceneDelegate.swift */; };
 		AD4E618F2523C1D1004B3158 /* movie_project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD4E618D2523C1D1004B3158 /* movie_project.xcdatamodeld */; };
@@ -29,6 +34,11 @@
 		AD2CF212252E23EE00189E70 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AD2CF215252E240700189E70 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD2CF21A252E242000189E70 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD2CF24B252E50C500189E70 /* MovieImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImages.swift; sourceTree = "<group>"; };
+		AD2CF253252E6F6E00189E70 /* BackdropsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackdropsCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD2CF256252E776100189E70 /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD2CF25C252E791B00189E70 /* BackdropsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackdropsListViewModel.swift; sourceTree = "<group>"; };
+		AD2CF260252E7B6B00189E70 /* CastListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastListViewModel.swift; sourceTree = "<group>"; };
 		AD4E61812523C1D1004B3158 /* movie-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movie-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4E61842523C1D1004B3158 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD4E61862523C1D1004B3158 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +65,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD2CF226252E471600189E70 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				AD2CF21A252E242000189E70 /* Info.plist */,
+				AD4E61842523C1D1004B3158 /* AppDelegate.swift */,
+				AD4E61862523C1D1004B3158 /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		AD4E61782523C1D1004B3158 = {
 			isa = PBXGroup;
 			children = (
@@ -74,14 +94,12 @@
 		AD4E61832523C1D1004B3158 /* movie-project */ = {
 			isa = PBXGroup;
 			children = (
+				AD2CF226252E471600189E70 /* Support */,
 				AD4E61D325250A11004B3158 /* View */,
 				AD4E61D225250A07004B3158 /* ViewModel */,
 				AD4E61C42525088F004B3158 /* Model */,
 				AD4E61BE2525079D004B3158 /* Service */,
-				AD4E61842523C1D1004B3158 /* AppDelegate.swift */,
-				AD4E61862523C1D1004B3158 /* SceneDelegate.swift */,
 				AD4E61902523C1D2004B3158 /* Assets.xcassets */,
-				AD2CF21A252E242000189E70 /* Info.plist */,
 				AD4E618D2523C1D1004B3158 /* movie_project.xcdatamodeld */,
 			);
 			path = "movie-project";
@@ -101,6 +119,7 @@
 				AD4E61C5252508A7004B3158 /* MovieDetail.swift */,
 				AD4E61CD252508EA004B3158 /* Movie.swift */,
 				AD2CF1F0252E1B4200189E70 /* MovieCast.swift */,
+				AD2CF24B252E50C500189E70 /* MovieImages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +129,8 @@
 			children = (
 				AD4E62072529481F004B3158 /* RootViewModel.swift */,
 				AD4E620C25294848004B3158 /* DetailViewModel.swift */,
+				AD2CF25C252E791B00189E70 /* BackdropsListViewModel.swift */,
+				AD2CF260252E7B6B00189E70 /* CastListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -122,6 +143,8 @@
 				AD4E61F72526D4FA004B3158 /* RootView.swift */,
 				AD4E620225293E0C004B3158 /* TopMoviesViewCell.swift */,
 				AD739CB3252B62B800AF45A9 /* DetailView.swift */,
+				AD2CF253252E6F6E00189E70 /* BackdropsCollectionViewCell.swift */,
+				AD2CF256252E776100189E70 /* CastCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,15 +221,20 @@
 			files = (
 				AD4E61F82526D4FA004B3158 /* RootView.swift in Sources */,
 				AD4E61CE252508EA004B3158 /* Movie.swift in Sources */,
+				AD2CF25D252E791B00189E70 /* BackdropsListViewModel.swift in Sources */,
 				AD4E61C6252508A7004B3158 /* MovieDetail.swift in Sources */,
 				AD4E620D25294848004B3158 /* DetailViewModel.swift in Sources */,
 				AD4E620325293E0C004B3158 /* TopMoviesViewCell.swift in Sources */,
+				AD2CF24C252E50C500189E70 /* MovieImages.swift in Sources */,
 				AD739CB4252B62B800AF45A9 /* DetailView.swift in Sources */,
+				AD2CF261252E7B6B00189E70 /* CastListViewModel.swift in Sources */,
 				AD4E618F2523C1D1004B3158 /* movie_project.xcdatamodeld in Sources */,
 				AD4E61852523C1D1004B3158 /* AppDelegate.swift in Sources */,
 				AD4E61872523C1D1004B3158 /* SceneDelegate.swift in Sources */,
 				AD2CF1F1252E1B4200189E70 /* MovieCast.swift in Sources */,
 				AD4E62082529481F004B3158 /* RootViewModel.swift in Sources */,
+				AD2CF257252E776100189E70 /* CastCollectionViewCell.swift in Sources */,
+				AD2CF254252E6F6E00189E70 /* BackdropsCollectionViewCell.swift in Sources */,
 				AD4E61C0252507BC004B3158 /* DataAccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,7 +367,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VHG5SDJ6H6;
-				INFOPLIST_FILE = "movie-project/Info.plist";
+				INFOPLIST_FILE = "movie-project/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,7 +386,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VHG5SDJ6H6;
-				INFOPLIST_FILE = "movie-project/Info.plist";
+				INFOPLIST_FILE = "movie-project/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

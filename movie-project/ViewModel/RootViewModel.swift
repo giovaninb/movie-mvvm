@@ -11,7 +11,6 @@ import UIKit
 class RootViewModel {
     
     private var listTopMovies: [Movie]?
-    
     var downloadDelegate: DownloadDelegate?
     
     init() {
