@@ -17,6 +17,7 @@ class DetailView: UIViewController {
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var overview: UITextView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     @IBOutlet weak var collectionImages: UICollectionView!
     @IBOutlet weak var collectionCasts: UICollectionView!
@@ -50,8 +51,28 @@ class DetailView: UIViewController {
 //        activityIndicator.startAnimating()
 //        imageActivityIndicator.startAnimating()
         overview.sizeToFit()
+        
+        self.collectionImages.
+        self.pageControl.hidesForSinglePage = true
+        
         detailViewModel?.downloadDelegate = self
         setupMovieDetail()
+    }
+    
+//    func resizedImage(at url: URL, for size: CGSize) -> UIImage? {
+//        guard let image = UIImage(contentsOfFile: url.path) else {
+//            return nil
+//        }
+//
+//        let renderer = UIGraphicsImageRenderer(size: size)
+//        return renderer.image { (context) in
+//            image.draw(in: CGRect(origin: .zero, size: size))
+//        }
+//    }
+    
+    override func viewWillLayoutSubviews() {
+       let frame = CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 200)
+       self.background.frame = frame
     }
     
     func setupMovieDetail() {
@@ -104,17 +125,18 @@ extension DetailView: UICollectionViewDataSource, UICollectionViewDelegate {
         if collectionView == self.collectionImages {
             return 5
         } else{
-            return 3
+            return 30
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView == self.collectionImages {
-            backdropViewModel?.fetchMovieImages(withId: id!)
+//            backdropViewModel?.fetchMovieImages(withId: id!)
             print("\(indexPath.row) - \(indexPath.section)")
+            self.pageControl.currentPage = indexPath.row
         } else {
-            castViewModel?.fetchMovieCast(withId: id!)
-            print("\(indexPath.row) - \(indexPath.section)")
+//            castViewModel?.fetchMovieCast(withId: id!)
+//            print("\(indexPath.row) - \(indexPath.section)")
         }
     }
     
@@ -122,19 +144,19 @@ extension DetailView: UICollectionViewDataSource, UICollectionViewDelegate {
         if collectionView == self.collectionImages {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieImagesCollectionViewCell", for: indexPath) as? BackdropsCollectionViewCell else {return UICollectionViewCell()}
             
-            guard let vmB = self.backdropViewModel else {return cell}
-            let imagePathBackdrops = vmB.getBackdrops(byIndex: indexPath.row)
-            
-            if imagePathBackdrops == "" {return cell}
-            
-            let imageUrlBackdrops = URL(string: imageBaseUrl + (imagePathBackdrops))
-            DispatchQueue.global(qos: .background).async {
-                guard let data = try? Data(contentsOf: imageUrlBackdrops!) else {return}
-                DispatchQueue.main.async {
-                    let imageDrops = UIImage(data: data)
-                    cell.backdrops.image = imageDrops
-                }
-            }
+//            guard let vmB = self.backdropViewModel else {return cell}
+//            let imagePathBackdrops = vmB.getBackdrops(byIndex: indexPath.row)
+//
+//            if imagePathBackdrops == "" {return cell}
+//
+//            let imageUrlBackdrops = URL(string: imageBaseUrl + (imagePathBackdrops))
+//            DispatchQueue.global(qos: .background).async {
+//                guard let data = try? Data(contentsOf: imageUrlBackdrops!) else {return}
+//                DispatchQueue.main.async {
+//                    let imageDrops = UIImage(data: data)
+//                    cell.backdrops.image = imageDrops
+//                }
+//            }
             
             return cell
         } else{

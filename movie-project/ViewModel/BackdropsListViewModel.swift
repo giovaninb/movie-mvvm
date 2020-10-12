@@ -9,9 +9,9 @@ import Foundation
 
 
 class BackdropsListViewModel {
-    
-    private var movieListImage: MovieImages?
-    private var currentPage : Int = 1
+
+    private var listBackdrops: [Backdrops]?
+    private var movieImages: MovieImages?
     var downloadDelegate: DownloadDelegate?
     
     
@@ -19,30 +19,25 @@ class BackdropsListViewModel {
         fetchMovieImages(withId: id)
     }
     
-//    func fetchMovieImages(for id: Int) {
-//        let currentIndex = indexPath.row + 1
-//
-//        if currentIndex/20 == currentPage {
-//            currentPage += 1
-//            fetchMovieImages()
-//        }
-//    }
-//
     func fetchMovieImages(withId id: Int){
         DataAccess.getMovieImages(from: id) { (movieImages) in
-            guard let backdrops = movieImages else {return}
-            self.movieListImage = backdrops
+            guard let movieImages = movieImages else {return}
+            self.movieImages = movieImages
             self.downloadDelegate?.didFinishDownload()
         
         }
     }
     
-    public func getBackdrops(byIndex index: Int) -> String {
-        guard let backdrops =  movieListImage?.backdrops?[index] else {return ""}
-        let pathBack = backdrops.filePath
-        print(pathBack)
-        return pathBack
+    func listBackdrops(movieListImages: [Backdrops]) -> [Backdrops] {
+        return movieListImages
     }
     
+    public func getBackdrops() -> String {
+        guard let backdrops = movieImages?.backdrops else {return ""}
+        let backdropsString = backdrops.map { (backdrops) -> String in
+            return backdrops.filePath
+        }.joined()
+        return backdropsString
+    }
     
 }
