@@ -191,7 +191,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oj-gY-kqk">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1250"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="OE2-L9-utG">
                                                 <rect key="frame" x="0.0" y="0.0" width="768" height="180"/>
@@ -400,7 +400,7 @@
                                             <constraint firstAttribute="trailing" secondItem="QTq-i8-RKC" secondAttribute="trailing" constant="20" id="kyG-ul-Baf"/>
                                             <constraint firstItem="EL9-an-ZNA" firstAttribute="top" secondItem="1oj-gY-kqk" secondAttribute="top" constant="62" id="tjU-HY-Vud"/>
                                             <constraint firstAttribute="trailing" secondItem="67T-Dc-SmD" secondAttribute="trailing" id="vqb-jT-ton"/>
-                                            <constraint firstAttribute="height" constant="980" id="y5H-II-eeV"/>
+                                            <constraint firstAttribute="height" constant="1250" id="y5H-II-eeV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
