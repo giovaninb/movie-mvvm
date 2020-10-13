@@ -144,6 +144,7 @@
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="s54-Tb-Mge">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
+                                <color key="tintColor" red="0.052944742140000001" green="0.17648309470000001" blue="0.17712506650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DLx-Yr-WLm"/>
@@ -182,11 +183,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPa-S6-um7">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="800"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPa-S6-um7">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="850"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oj-gY-kqk">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1250"/>
+                                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oj-gY-kqk">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1300"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="OE2-L9-utG">
                                                 <rect key="frame" x="0.0" y="0.0" width="768" height="180"/>
@@ -395,7 +396,7 @@
                                             <constraint firstAttribute="trailing" secondItem="QTq-i8-RKC" secondAttribute="trailing" constant="20" id="kyG-ul-Baf"/>
                                             <constraint firstItem="EL9-an-ZNA" firstAttribute="top" secondItem="1oj-gY-kqk" secondAttribute="top" constant="62" id="tjU-HY-Vud"/>
                                             <constraint firstAttribute="trailing" secondItem="67T-Dc-SmD" secondAttribute="trailing" id="vqb-jT-ton"/>
-                                            <constraint firstAttribute="height" constant="1250" id="y5H-II-eeV"/>
+                                            <constraint firstAttribute="height" constant="1300" id="y5H-II-eeV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -404,7 +405,7 @@
                                     <constraint firstItem="1oj-gY-kqk" firstAttribute="leading" secondItem="eVh-Jl-Tqd" secondAttribute="leading" id="Fz0-FD-Rpm"/>
                                     <constraint firstItem="1oj-gY-kqk" firstAttribute="bottom" secondItem="eVh-Jl-Tqd" secondAttribute="bottom" id="KwF-Ee-gsA"/>
                                     <constraint firstItem="1oj-gY-kqk" firstAttribute="trailing" secondItem="eVh-Jl-Tqd" secondAttribute="trailing" priority="1" id="Nhk-Oz-hjE"/>
-                                    <constraint firstAttribute="height" constant="800" id="PX3-ai-ufy"/>
+                                    <constraint firstAttribute="height" constant="850" id="PX3-ai-ufy"/>
                                     <constraint firstItem="1oj-gY-kqk" firstAttribute="top" secondItem="eVh-Jl-Tqd" secondAttribute="top" id="q4b-ls-m1C"/>
                                     <constraint firstItem="1oj-gY-kqk" firstAttribute="width" secondItem="dGY-CE-Cgd" secondAttribute="width" id="uFJ-bJ-qJf"/>
                                 </constraints>
