@@ -159,11 +159,6 @@
                             <constraint firstItem="ojd-jP-oR4" firstAttribute="top" secondItem="DLx-Yr-WLm" secondAttribute="top" id="ezJ-lz-ncC"/>
                             <constraint firstAttribute="trailing" secondItem="s54-Tb-Mge" secondAttribute="trailing" id="fud-Vx-7RR"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="s54-Tb-Mge"/>
-                            </mask>
-                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Melhores Filmes" largeTitleDisplayMode="always" id="lNX-VL-JeB"/>
