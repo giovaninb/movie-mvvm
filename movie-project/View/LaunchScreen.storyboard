@@ -17,20 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MVVM UIKit - MovieDB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07e-9L-b1W">
-                                <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kCn-by-Mxf">
+                                <rect key="frame" x="263.5" y="513" width="283" height="54"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MovieDB - MVVM UIKit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07e-9L-b1W">
+                                        <rect key="frame" x="0.0" y="0.0" width="283" height="33.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giovani Bettoni" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50h-sJ-O6S">
+                                        <rect key="frame" x="84" y="33.5" width="115" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="07e-9L-b1W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1iU-YD-Gd6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="07e-9L-b1W" secondAttribute="trailing" id="VZr-D3-LGt"/>
-                            <constraint firstItem="07e-9L-b1W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tPz-PG-Tul"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="07e-9L-b1W" secondAttribute="bottom" id="wcG-lI-vfQ"/>
+                            <constraint firstItem="kCn-by-Mxf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="QuK-uj-V9D"/>
+                            <constraint firstItem="kCn-by-Mxf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dIG-q0-ASo"/>
                         </constraints>
                     </view>
                 </viewController>

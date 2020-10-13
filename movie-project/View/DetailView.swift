@@ -44,7 +44,7 @@ class DetailView: UIViewController {
         
         self.rating.layer.cornerRadius = (rating?.frame.size.height)!/4.0
         self.rating?.layer.masksToBounds = true
-        self.cover.layer.cornerRadius = 26
+        self.cover.layer.cornerRadius = 12
         self.cover.layer.borderWidth = 2
         self.cover.layer.borderColor = #colorLiteral(red: 0.3833134472, green: 0.8329965472, blue: 0.46416682, alpha: 1)
         self.overview.sizeToFit()
@@ -150,7 +150,7 @@ extension DetailView: UICollectionViewDataSource, UICollectionViewDelegate, UICo
         if collectionView == self.collectionImages {
             return CGSize(width: collectionImages.frame.width, height: collectionImages.frame.height)
         } else if collectionView == self.collectionCasts {
-            return CGSize(width: 135, height: 170)
+            return CGSize(width: 135, height: 185)
         }
         return CGSize()
     }
