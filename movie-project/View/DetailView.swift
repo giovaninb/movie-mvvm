@@ -9,8 +9,6 @@ import UIKit
 
 class DetailView: UIViewController {
     
-//    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-//    @IBOutlet var imageActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cover: UIImageView!
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var rating: UILabel!
@@ -111,7 +109,6 @@ extension DetailView: UICollectionViewDataSource, UICollectionViewDelegate, UICo
             if imagePathBackdrops == "" {return cell}
 
             let imageUrlBackdrops = URL(string: imageBaseUrl + (imagePathBackdrops))
-//            print(imageUrlBackdrops!)
             DispatchQueue.global(qos: .background).async {
                 guard let data = try? Data(contentsOf: imageUrlBackdrops!) else {return}
                 DispatchQueue.main.async {
@@ -172,7 +169,6 @@ extension DetailView: DownloadDelegate {
             self.collectionImages.reloadData()
             self.pageControl.reloadInputViews()
             self.collectionCasts.reloadData()
-//            self.activityIndicator.isHidden = true
         }
     }
     
