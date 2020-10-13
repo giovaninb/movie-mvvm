@@ -9,11 +9,15 @@ import UIKit
 
 class CastCollectionViewCell: UICollectionViewCell {
     
-    
-    
     @IBOutlet weak var castPhoto: UIImageView!
     @IBOutlet weak var castActorName: UILabel!
     @IBOutlet weak var castActorCharacter: UILabel!
+    
+    var imageCast: UIImage! {
+        didSet {
+            castPhoto.image = imageCast
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

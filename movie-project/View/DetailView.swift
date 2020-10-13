@@ -27,19 +27,18 @@ class DetailView: UIViewController {
     var backdropViewModel: BackdropsListViewModel?
     var castViewModel: CastListViewModel?
     
+    var currentIndex = 0
     var id : Int?
-    var imageBackdropsList: MovieImages?
     let imageBaseUrl: String = "https://image.tmdb.org/t/p/w500"
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.detailViewModel = DetailViewModel(id: self.id!)
         self.backdropViewModel = BackdropsListViewModel(id: self.id!)
+        self.castViewModel = CastListViewModel(id: self.id!)
         
         collectionImages.delegate = self
         collectionImages.dataSource = self
-        
         collectionCasts.delegate = self
         collectionCasts.dataSource = self
         
@@ -48,50 +47,24 @@ class DetailView: UIViewController {
         self.cover.layer.cornerRadius = 26
         self.cover.layer.borderWidth = 2
         self.cover.layer.borderColor = #colorLiteral(red: 0.3833134472, green: 0.8329965472, blue: 0.46416682, alpha: 1)
-//        activityIndicator.startAnimating()
-//        imageActivityIndicator.startAnimating()
-        overview.sizeToFit()
-        
-        self.collectionImages.
-        self.pageControl.hidesForSinglePage = true
-        
+        self.overview.sizeToFit()
+                
         detailViewModel?.downloadDelegate = self
+        backdropViewModel?.downloadDelegate = self
+        castViewModel?.downloadDelegate = self
         setupMovieDetail()
-    }
-    
-//    func resizedImage(at url: URL, for size: CGSize) -> UIImage? {
-//        guard let image = UIImage(contentsOfFile: url.path) else {
-//            return nil
-//        }
-//
-//        let renderer = UIGraphicsImageRenderer(size: size)
-//        return renderer.image { (context) in
-//            image.draw(in: CGRect(origin: .zero, size: size))
-//        }
-//    }
-    
-    override func viewWillLayoutSubviews() {
-       let frame = CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 200)
-       self.background.frame = frame
     }
     
     func setupMovieDetail() {
         guard let viewModel = self.detailViewModel else {return}
+        guard let bViewModel = self.backdropViewModel else { return }
         movieTitle.text = viewModel.getTitle()
         rating.text = viewModel.getPopularity()
         overview.text = viewModel.getOverview()
         duration.text = "Duração: " + viewModel.getRuntime()
+        pageControl.numberOfPages = bViewModel.getBackDropsCount()
         
         // Load Images
-        loadTopImages()
-//        loadBackdropsImages()
-        
-        
-        
-    }
-    
-    func loadTopImages() {
-        guard let viewModel = self.detailViewModel else {return}
         let imagePathCover = viewModel.getCover()
         let imagePathBackground = viewModel.getBackground()
         if imagePathCover == "" {return}
@@ -103,7 +76,6 @@ class DetailView: UIViewController {
             DispatchQueue.main.async {
                 let imageCov = UIImage(data: data)
                 self.cover.image = imageCov
-//                self.imageActivityIndicator.isHidden = true
             }
         }
         
@@ -116,72 +88,79 @@ class DetailView: UIViewController {
             }
         }
     }
-
 }
+   
 
-
-extension DetailView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension DetailView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionImages {
-            return 5
-        } else{
-            return 30
+            return self.backdropViewModel?.getBackDropsCount() ?? 0
+        } else if collectionView == self.collectionCasts {
+            return self.castViewModel?.getCastCount() ?? 0
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if collectionView == self.collectionImages {
-//            backdropViewModel?.fetchMovieImages(withId: id!)
-            print("\(indexPath.row) - \(indexPath.section)")
-            self.pageControl.currentPage = indexPath.row
-        } else {
-//            castViewModel?.fetchMovieCast(withId: id!)
-//            print("\(indexPath.row) - \(indexPath.section)")
-        }
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.collectionImages {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieImagesCollectionViewCell", for: indexPath) as? BackdropsCollectionViewCell else {return UICollectionViewCell()}
+            let movieImageIndex = indexPath.row
             
-//            guard let vmB = self.backdropViewModel else {return cell}
-//            let imagePathBackdrops = vmB.getBackdrops(byIndex: indexPath.row)
-//
-//            if imagePathBackdrops == "" {return cell}
-//
-//            let imageUrlBackdrops = URL(string: imageBaseUrl + (imagePathBackdrops))
-//            DispatchQueue.global(qos: .background).async {
-//                guard let data = try? Data(contentsOf: imageUrlBackdrops!) else {return}
-//                DispatchQueue.main.async {
-//                    let imageDrops = UIImage(data: data)
-//                    cell.backdrops.image = imageDrops
-//                }
-//            }
-            
+            guard let vmB = self.backdropViewModel else {return cell}
+            let imagePathBackdrops = vmB.getBackdrops(byIndexPath: movieImageIndex)
+            if imagePathBackdrops == "" {return cell}
+
+            let imageUrlBackdrops = URL(string: imageBaseUrl + (imagePathBackdrops))
+//            print(imageUrlBackdrops!)
+            DispatchQueue.global(qos: .background).async {
+                guard let data = try? Data(contentsOf: imageUrlBackdrops!) else {return}
+                DispatchQueue.main.async {
+                    let imageDrops = UIImage(data: data)
+                    cell.backdrops.image = imageDrops
+                }
+            }
             return cell
-        } else{
+        } else if collectionView == self.collectionCasts {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCastCollectionView", for: indexPath) as? CastCollectionViewCell else {return UICollectionViewCell()}
-            
+            let movieCastIndex = indexPath.row
+
             guard  let vmC = self.castViewModel else {return cell}
-//            let imagePathBackdrops = vmC.getBackdrop()
-            cell.castActorName.text = vmC.getCastName()
-//            cell.castActorCharacter.text = vmC.getCastActor()
+            cell.castActorName.text = vmC.getCastName(byIndexPath: movieCastIndex)
+            cell.castActorCharacter.text = vmC.getCastCharacter(byIndexPath: movieCastIndex)
             
-//            if imagePathBackdrops == "" {return cell}
-//
-//            let imageUrlBackdrops = URL(string: imageBaseUrl + (imagePathBackdrops))
-//            DispatchQueue.global(qos: .background).async {
-//                guard let data = try? Data(contentsOf: imageUrlBackdrops!) else {return}
-//                DispatchQueue.main.async {
-//                    let imageDrops = UIImage(data: data)
-//                    cell.backdrops.image = imageDrops
-//                }
-//            }
+            let imagePathCast = vmC.getCastPhoto(byIndexPath: movieCastIndex)
+            if imagePathCast == "" {return cell}
+
+            let imageUrlCast = URL(string: imageBaseUrl + (imagePathCast))
+            print(imageUrlCast!)
+            DispatchQueue.global(qos: .background).async {
+                guard let data = try? Data(contentsOf: imageUrlCast!) else {return}
+                DispatchQueue.main.async {
+                    let imageCast = UIImage(data: data)
+                    cell.castPhoto.image = imageCast
+                }
+            }
             
             return cell
         }
+        return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.collectionImages {
+            return CGSize(width: collectionImages.frame.width, height: collectionImages.frame.height)
+        } else if collectionView == self.collectionCasts {
+            return CGSize(width: 135, height: 170)
+        }
+        return CGSize()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == self.collectionImages {
+            currentIndex = Int(scrollView.contentOffset.x / collectionImages.frame.size.width)
+            pageControl.currentPage = currentIndex
+        }
+    }
     
 }
 
@@ -190,6 +169,9 @@ extension DetailView: DownloadDelegate {
     func didFinishDownload() {
         DispatchQueue.main.async {
             self.setupMovieDetail()
+            self.collectionImages.reloadData()
+            self.pageControl.reloadInputViews()
+            self.collectionCasts.reloadData()
 //            self.activityIndicator.isHidden = true
         }
     }

@@ -24,28 +24,28 @@ class CastListViewModel {
         }
     }
     
-    public func getCastName() -> String {
-        guard let casts = movieCast?.cast else {return ""}
-        let castString = casts.map { (cast) -> String in
-            return cast.name
-            }.joined(separator: ", ")
-        return castString
+    func listCasts(movieListCasts: [Cast]) -> [Cast] {
+        return movieListCasts
     }
     
-    public func getCastCharacter() -> String {
-        guard let casts = movieCast?.cast else {return ""}
-        let castString = casts.map { (cast) -> String in
-            return cast.name
-            }.joined(separator: ", ")
-        return castString
+    public func getCastName(byIndexPath index: Int) -> String {
+        guard let castName = movieCast?.cast[index].name else {return ""}
+        return castName
     }
     
-//    public func getCastName() -> String {
-//        guard let casts = movieCast?.cast else {return ""}
-//        let castString = casts.map { (cast) -> String in
-//            return cast.name
-//            }.joined(separator: ", ")
-//        return castString
-//    }
+    public func getCastCharacter(byIndexPath index: Int) -> String {
+        guard let castCharacter = movieCast?.cast[index].character else {return ""}
+        return castCharacter
+    }
+    
+    public func getCastCount() -> Int {
+        movieCast?.cast.count ?? 0
+    }
+    
+    public func getCastPhoto(byIndexPath index: Int) -> String {
+        guard let castProfilePath = movieCast?.cast[index].profilePath else {return ""}
+        return castProfilePath
+    }
+
     
 }

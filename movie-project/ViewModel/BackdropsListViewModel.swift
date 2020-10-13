@@ -7,13 +7,10 @@
 
 import Foundation
 
-
 class BackdropsListViewModel {
 
-    private var listBackdrops: [Backdrops]?
     private var movieImages: MovieImages?
     var downloadDelegate: DownloadDelegate?
-    
     
     init(id: Int) {
         fetchMovieImages(withId: id)
@@ -28,16 +25,22 @@ class BackdropsListViewModel {
         }
     }
     
-    func listBackdrops(movieListImages: [Backdrops]) -> [Backdrops] {
+    func listBackdrops(movieListImages: [Backdrop]) -> [Backdrop] {
         return movieListImages
     }
     
-    public func getBackdrops() -> String {
-        guard let backdrops = movieImages?.backdrops else {return ""}
-        let backdropsString = backdrops.map { (backdrops) -> String in
-            return backdrops.filePath
-        }.joined()
-        return backdropsString
+    public func getBackdrops(byIndexPath index: Int) -> String {
+        guard let backdropsFilePath = movieImages?.backdrops[index].filePath else {return ""}
+        return backdropsFilePath
+    }
+    
+    public func getIdMovie() -> String {
+        let idMovie = String(movieImages?.id ?? 724089)
+        return idMovie
+    }
+    
+    public func getBackDropsCount() -> Int {
+        movieImages?.backdrops.count ?? 0
     }
     
 }

@@ -8,23 +8,25 @@
 import Foundation
 
 struct MovieImages: Codable {
-    var backdrops: [Backdrops]?
-    var id: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case id, backdrops
-    }
+    let id: Int
+    let backdrops, posters: [Backdrop]
 }
 
-struct Backdrops: Codable {
+struct Backdrop: Codable {
     let aspectRatio: Double
     let filePath: String
-    let height, width: Int
-}
+    let height: Int
+    let iso639_1: String?
+    let voteAverage: Double
+    let voteCount, width: Int
 
-enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case aspectRatio = "aspect_ratio"
         case filePath = "file_path"
         case height
+        case iso639_1 = "iso_639_1"
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
         case width
     }
+}

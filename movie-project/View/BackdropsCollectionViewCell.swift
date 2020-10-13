@@ -11,13 +11,12 @@ class BackdropsCollectionViewCell: UICollectionViewCell {
 
     
     @IBOutlet weak var backdrops: UIImageView!
-    @IBOutlet weak var pageControl: UIPageControl!
     
-    
-    var viewModel : DetailViewModel?
-    var imagesBackdropsList: MovieImages?
-    var id : Int?
-    
+    var imageBackdrop: UIImage! {
+        didSet {
+            backdrops.image = imageBackdrop
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
